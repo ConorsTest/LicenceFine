@@ -12,7 +12,7 @@ public class Fine {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private int refNum;
+    private String refNum;
     private float fine;
     private boolean paid;
 
@@ -22,26 +22,9 @@ public class Fine {
     private String county; //Optional
     private String postcode;
 
-    // For when no county has been provided.
-    public Fine(int refNum,
-                float fine,
-                boolean paid,
-                String addressLineOne,
-                String addressLineTwo,
-                String townOrCity,
-                String postcode){
-
-        this.refNum = refNum;
-        this.fine = fine;
-        this.paid = paid;
-        this.addressLineOne = addressLineOne;
-        this.addressLineTwo = addressLineTwo;
-        this.townOrCity = townOrCity;
-        this.postcode = postcode;
-    }
 
     //For use when county has been provided.
-    public Fine(int refNum,
+    public Fine(String refNum,
                 float fine,
                 boolean paid,
                 String addressLineOne,
@@ -60,6 +43,7 @@ public class Fine {
         this.postcode = postcode;
     }
 
+
     public Long getId() {
         return id;
     }
@@ -76,11 +60,11 @@ public class Fine {
         this.paid = paid;
     }
 
-    public int getRefNum() {
+    public String getRefNum() {
         return refNum;
     }
 
-    public void setRefNum(int refNum) {
+    public void setRefNum(String refNum) {
         this.refNum = refNum;
     }
 
