@@ -17,7 +17,7 @@ public class Fine {
     private boolean paid;
 
     private String addressLineOne;
-    private String addressLineTwo;
+    private String addressLineTwo; //Optional
     private String townOrCity;
     private String county; //Optional
     private String postcode;

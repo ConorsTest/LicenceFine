@@ -22,7 +22,7 @@ public class LoadFines {
             repo.save(new Fine("2073045712093845",
                     53.85F,
                     true,
-                    "6 Sad Street",
+                    "7 Sad Street",
                     "",
                     "Smarttown",
                     "Up",
