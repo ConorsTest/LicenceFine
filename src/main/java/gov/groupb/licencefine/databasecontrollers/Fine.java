@@ -22,6 +22,9 @@ public class Fine {
     private String county; //Optional
     private String postcode;
 
+    public Fine(){
+
+    }
 
     //For use when county has been provided.
     public Fine(String refNum,
