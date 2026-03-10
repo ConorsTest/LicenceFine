@@ -18,39 +18,46 @@
 
 
   <style>
+    /* Force the header logo link to stay white in all states */
+        .govuk-header__logo a,
+        .govuk-header__logo a:link,
+        .govuk-header__logo a:visited,
+        .govuk-header__logo a:hover,
+        .govuk-header__logo a:active {
+          color: #ffffff !important;
+        }
 
+        .govuk-header--blue {
+          background-color: #1d70b8;
+          border-bottom-color: #1d70b8;
+        }
+        /* Pushes the 'Sign out' link to the far right on desktop */
+        @media (min-width: 40.0625em) {
+          .govuk-header__navigation-item--right {
+            margin-left: auto;
+          }
+          .govuk-header__navigation-list {
+            display: flex;
+            width: 100%;
+          }
+        }
 
-    .govuk-header--blue {
-      background-color: #1d70b8;
-      border-bottom-color: #1d70b8;
-    }
-    /* Pushes the 'Sign out' link to the far right on desktop */
-    @media (min-width: 40.0625em) {
-      .govuk-header__navigation-item--right {
-        margin-left: auto;
-      }
-      .govuk-header__navigation-list {
-        display: flex;
-        width: 100%;
-      }
-    }
+        /* Custom CSS to align the 4 reference number boxes side-by-side */
+        .reference-number-group {
+          display: flex;
+          gap: 15px; /* Space between the boxes */
+          align-items: center;
+        }
 
-    /* Custom CSS to align the 4 reference number boxes side-by-side */
-    .reference-number-group {
-      display: flex;
-      gap: 15px; /* Space between the boxes */
-      align-items: center;
-    }
+        .reference-number-group .govuk-form-group {
+          margin-bottom: 0; /* Remove default bottom margin for side-by-side alignment */
+        }
 
-    .reference-number-group .govuk-form-group {
-      margin-bottom: 0; /* Remove default bottom margin for side-by-side alignment */
-    }
-
-    /* Subtle dash between boxes */
-    .reference-number-separator {
-      font-size: 24px;
-      color: #505a5f;
-    }
+        /* Subtle dash between boxes */
+        .reference-number-separator {
+          font-size: 24px;
+          color: #505a5f;
+        }
   </style>
 </head>
 
