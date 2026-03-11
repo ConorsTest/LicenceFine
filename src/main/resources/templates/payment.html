@@ -73,92 +73,91 @@
                         <dt class="govuk-summary-list__key">
                             Reference Number
                         </dt>
-                        <dd class="govuk-summary-list__value">
-
+                        <dd class="govuk-summary-list__value" th:text="${fine.refNum}">
                         </dd>
                     </div>
                     <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">
                             Amount Owed
                         </dt>
-                        <dd class="govuk-summary-list__value">
-
+                        <dd class="govuk-summary-list__value" th:text="${fine.fine}">
                         </dd>
                     </div>
                     <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">
                             Issue Date
                         </dt>
-                        <dd class="govuk-summary-list__value">
-
+                        <dd class="govuk-summary-list__value" th:text="${fine.issueDate}">
                         </dd>
                     </div>
                     <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">
                             Due Date
                         </dt>
-                        <dd class="govuk-summary-list__value">
-
+                        <dd class="govuk-summary-list__value" th:text="${fine.dueDate}">
                         </dd>
                     </div>
                     <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">
                             Address
                         </dt>
-                        <dd class="govuk-summary-list__value">
-
+                        <dd class="govuk-summary-list__value"
+                            th:text="${fine.addressLineOne + ',  ' + fine.addressLineTwo + ',  ' + fine.townOrCity + ', ' + fine.postcode}">
                         </dd>
                     </div>
                 </dl>
             </div>
-            <div id="payment-details-container" style="border-left: 3px solid black; display: inline-block; flex: 1; padding-left: 20px">
-                <div class="govuk-form-group">
-                    <label class="govuk-label" for="email">
-                        Email address
-                    </label>
-                    <div id="email-hint" class="govuk-hint">
-                        We’ll only use this to send you a receipt
+            <form th:action="@{/payment/process}" th:object="${fine}" method="post">
+                <div id="payment-details-container" style="border-left: 3px solid black; display: inline-block; flex: 1; padding-left: 20px">
+                    <input type="hidden" name="refNum" th:value="${fine.refNum}">
+                    <div class="govuk-form-group">
+                        <label class="govuk-label" for="email">
+                            Email address
+                        </label>
+                        <div id="email-hint" class="govuk-hint">
+                            We’ll only use this to send you a receipt
+                        </div>
+                        <input class="govuk-input" id="email" name="email" type="email" spellcheck="false" aria-describedby="email-hint" autocomplete="email">
                     </div>
-                    <input class="govuk-input" id="email" name="email" type="email" spellcheck="false" aria-describedby="email-hint" autocomplete="email">
+                    <h2 class="govuk-heading-l">Enter Payment Card Details</h2>
+                    <div class="govuk-form-group">
+                        <label class="govuk-label" for="card-number">
+                            Card Number
+                        </label>
+                        <input class="govuk-input" id="card-number" name="card-number" type="text" spellcheck="false">
+                    </div>
+                    <div class="govuk-form-group">
+                        <label class="govuk-label" for="expiry-date">
+                            Expiry Date
+                        </label>
+                        <input class="govuk-input" id="expiry-date" name="expiry-date" type="text" spellcheck="false">
+                    </div>
+                    <div class="govuk-form-group">
+                        <label class="govuk-label" for="card-security-code">
+                            Card Security Code
+                        </label>
+                        <input class="govuk-input" id="card-security-code" name="card-security-code" type="text" spellcheck="false">
+                    </div>
+                    <div class="govuk-form-group">
+                        <label class="govuk-label" for="account-name">
+                            Name on the Account
+                        </label>
+                        <input class="govuk-input" id="account-name" name="account-name" type="text" spellcheck="false">
+                    </div>
+                    <button type="submit" class="govuk-button" data-module="govuk-button">
+                        Submit
+                    </button>
                 </div>
-                <h2 class="govuk-heading-l">Enter Payment Card Details</h2>
-                <div class="govuk-form-group">
-                    <label class="govuk-label" for="card-number">
-                        Card Number
-                    </label>
-                    <input class="govuk-input" id="card-number" name="card-number" type="text" spellcheck="false">
-                </div>
-                <div class="govuk-form-group">
-                    <label class="govuk-label" for="expiry-date">
-                        Expiry Date
-                    </label>
-                    <input class="govuk-input" id="expiry-date" name="expiry-date" type="text" spellcheck="false">
-                </div>
-                <div class="govuk-form-group">
-                    <label class="govuk-label" for="card-security-code">
-                        Card Security Code
-                    </label>
-                    <input class="govuk-input" id="card-security-code" name="card-security-code" type="text" spellcheck="false">
-                </div>
-                <div class="govuk-form-group">
-                    <label class="govuk-label" for="account-name">
-                        Name on the Account
-                    </label>
-                    <input class="govuk-input" id="account-name" name="account-name" type="text" spellcheck="false">
-                </div>
-                <button type="submit" class="govuk-button" data-module="govuk-button">
-                    Submit
-                </button>
-            </div>
+            </form>
         </div>
     </main>
 </div>
-<script th:src="@{/js/govuk-frontend-6.1.0.min.js}"> </script>
-<script type="module">
-    import {
-      initAll
-    } from '/javascripts/govuk-frontend.min.js'
-    initAll()
-</script>
+<!--<script th:src="@{/js/govuk-frontend-6.1.0.min.js}"> </script>-->
+<!--<script type="module">-->
+<!--    import {-->
+<!--      initAll-->
+<!--    } from '/javascripts/govuk-frontend.min.js'-->
+<!--    initAll()-->
+<!--</script>-->
 </body>
 </html>
