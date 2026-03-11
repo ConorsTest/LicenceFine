@@ -54,6 +54,7 @@ public class PaymentWebController {
         fine.setPaid(true);
 
         fineRepository.save(fine);
+        model.addAttribute("fine", fine);
 
         System.err.println("success");
         return "redirect:/payment/success/" + fine.getRefNum();
@@ -64,10 +65,9 @@ public class PaymentWebController {
                                   Model model) {
 
         System.err.println(refNum);
-        model.addAttribute(refNum, "refNum");
+        model.addAttribute("refNum", refNum);
         System.err.println(fineRepository.findByRefNum(refNum).getAddressLineOne());
-        model.addAttribute(fineRepository.findByRefNum(refNum).getEmail(),
-                "email");
+        model.addAttribute("email", fineRepository.findByRefNum(refNum).getEmail());
         System.err.println(fineRepository.findByRefNum(refNum).getEmail());
         return "success";
     }

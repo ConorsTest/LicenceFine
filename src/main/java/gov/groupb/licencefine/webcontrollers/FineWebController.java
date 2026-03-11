@@ -54,6 +54,10 @@ public class FineWebController {
             return "index";
         }
 
+        if(fine.isPaid()){
+            return "redirect:/payment/success/" + numberAndAddressForm.getRefNum();
+        }
+
         model.addAttribute("Success Message",
                 "Details Submitted Successfully");
         return "redirect:/payment/" + numberAndAddressForm.getRefNum();

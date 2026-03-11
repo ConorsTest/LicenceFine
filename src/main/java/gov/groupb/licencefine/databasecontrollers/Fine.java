@@ -40,7 +40,8 @@ public class Fine {
                 String addressLineTwo,
                 String townOrCity,
                 String county,
-                String postcode){
+                String postcode,
+                String email){
 
         this.refNum = refNum;
         this.fine = fine;
@@ -52,6 +53,7 @@ public class Fine {
         this.townOrCity = townOrCity;
         this.county = county;
         this.postcode = postcode;
+        this.email = email;
     }
 
 

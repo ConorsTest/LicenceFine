@@ -19,7 +19,8 @@ public class LoadFines {
                     "",
                     "Dumbtown",
                     "",
-                    "DB6 9SH"
+                    "DB6 9SH",
+                    ""
                     ));
             repo.save(new Fine("2073045712093845",
                     53.85F,
@@ -30,7 +31,8 @@ public class LoadFines {
                     "",
                     "Smarttown",
                     "Up",
-                    "DB6 9SH"
+                    "DB6 9SH",
+                    "email@smarttown.com"
             ));
         };
     }
