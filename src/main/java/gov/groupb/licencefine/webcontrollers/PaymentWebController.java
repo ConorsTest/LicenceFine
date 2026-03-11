@@ -1,10 +1,10 @@
-package gov.groupb.licencefine.web;
+package gov.groupb.licencefine.webcontrollers;
 
 import gov.groupb.licencefine.databasecontrollers.Fine;
 import gov.groupb.licencefine.databasecontrollers.FineRepository;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/payment")

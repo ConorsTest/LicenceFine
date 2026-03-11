@@ -19,7 +19,7 @@ public class Fine {
     private String dueDate;
 
     private String addressLineOne;
-    private String addressLineTwo;
+    private String addressLineTwo; //Optional
     private String townOrCity;
     private String county; //Optional
     private String postcode;
