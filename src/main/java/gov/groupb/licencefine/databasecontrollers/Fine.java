@@ -15,12 +15,16 @@ public class Fine {
     private String refNum;
     private float fine;
     private boolean paid;
+    private String issueDate;
+    private String dueDate;
 
     private String addressLineOne;
     private String addressLineTwo; //Optional
     private String townOrCity;
     private String county; //Optional
     private String postcode;
+
+    private String email;
 
     public Fine(){
 
@@ -30,6 +34,8 @@ public class Fine {
     public Fine(String refNum,
                 float fine,
                 boolean paid,
+                String issueDate,
+                String dueDate,
                 String addressLineOne,
                 String addressLineTwo,
                 String townOrCity,
@@ -38,6 +44,8 @@ public class Fine {
 
         this.refNum = refNum;
         this.fine = fine;
+        this.issueDate = issueDate;
+        this.dueDate = dueDate;
         this.paid = paid;
         this.addressLineOne = addressLineOne;
         this.addressLineTwo = addressLineTwo;
@@ -61,6 +69,22 @@ public class Fine {
 
     public void setPaid(boolean paid) {
         this.paid = paid;
+    }
+
+    public String getIssueDate(){
+        return issueDate;
+    }
+
+    public void setIssueDate(String issueDate){
+        this.issueDate = issueDate;
+    }
+
+    public String getDueDate(){
+        return dueDate;
+    }
+
+    public void setDueDate(String dueDate){
+        this.dueDate = dueDate;
     }
 
     public String getRefNum() {
@@ -117,5 +141,13 @@ public class Fine {
 
     public void setPostcode(String postcode) {
         this.postcode = postcode;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
