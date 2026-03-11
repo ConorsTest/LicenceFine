@@ -12,13 +12,11 @@ public class NumberAndAddressForm {
     @NotBlank(message = "Address Line 1 is necessary")
     private String addressLineOne;
 
-    @NotBlank
     private String addressLineTwo;
 
     @NotBlank(message = "Town/City is necessary")
     private String townOrCity;
 
-    @NotBlank
     private String county;
 
     @NotBlank(message = "Postcode is necessary")
