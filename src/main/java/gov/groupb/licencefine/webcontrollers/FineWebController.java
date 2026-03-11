@@ -1,5 +1,6 @@
 package gov.groupb.licencefine.webcontrollers;
 
+import gov.groupb.licencefine.databasecontrollers.Fine;
 import gov.groupb.licencefine.databasecontrollers.FineRepository;
 import gov.groupb.licencefine.validators.NumberAndAddressForm;
 import jakarta.validation.Valid;
@@ -8,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.Optional;
 
 @Controller
 public class FineWebController {
@@ -34,6 +37,23 @@ public class FineWebController {
             System.err.println(result.getAllErrors());
             return "index";
         }
+        Fine fine = repo.findByRefNum(numberAndAddressForm.getRefNum());
+        if(fine == null){
+            model.addAttribute("errorMessage",
+                    "No Match for Reference Number");
+            return "index";
+        }
+        if(!fine.getAddressLineOne().equals(numberAndAddressForm.getAddressLineOne())
+            || !fine.getAddressLineTwo().equals(numberAndAddressForm.getAddressLineTwo())
+            || !fine.getTownOrCity().equals(numberAndAddressForm.getTownOrCity())
+            || !fine.getCounty().equals(numberAndAddressForm.getCounty())
+            || !fine.getPostcode().equals(numberAndAddressForm.getPostcode())){
+
+            model.addAttribute("errorMessage", "No Match for Address and Reference Number");
+
+            return "index";
+        }
+
         model.addAttribute("Success Message",
                 "Details Submitted Successfully");
         return "redirect:/payment/" + numberAndAddressForm.getRefNum();
