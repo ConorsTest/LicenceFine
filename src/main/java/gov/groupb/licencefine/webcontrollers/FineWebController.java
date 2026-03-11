@@ -31,6 +31,7 @@ public class FineWebController {
                             Model model){
 
         if(result.hasErrors()){
+            System.err.println(result.getAllErrors());
             return "index";
         }
         model.addAttribute("Success Message",

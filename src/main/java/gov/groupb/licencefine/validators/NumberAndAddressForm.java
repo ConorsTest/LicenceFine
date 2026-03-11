@@ -5,8 +5,8 @@ import jakarta.validation.constraints.Size;
 
 public class NumberAndAddressForm {
 
-    @Size(min = 16, max = 16,
-            message = "The reference number must be 16 digits long")
+    //@Size(min = 16, max = 16,
+    //        message = "The reference number must be 16 digits long")
     private String refNum;
 
     @NotBlank(message = "Address Line 1 is necessary")
