@@ -38,7 +38,11 @@ public class PaymentWebController {
         if(result.hasErrors()){
             System.err.println(result.getAllErrors());
             System.err.println("Oh No");
-            return "redirect:/payment/" + cardForm.getRefNum();
+            Fine fine = fineRepository.findByRefNum(cardForm.getRefNum());
+            model.addAttribute("fine", fine);
+            model.addAttribute("cardForm", cardForm);
+            model.addAttribute("errorMessage", "Invalid Card Details");
+            return "payment";
         }
         model.addAttribute("Success message",
                 "Details submitted successfully");

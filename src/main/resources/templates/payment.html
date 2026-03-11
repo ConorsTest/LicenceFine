@@ -107,8 +107,16 @@
                     </div>
                 </dl>
             </div>
-            <form th:action="@{/payment/process}" th:object="${cardForm}" method="post">
-                <div id="payment-details-container" style="border-left: 3px solid black; display: inline-block; flex: 1; padding-left: 20px">
+            <div id="payment-details-container" style="border-left: 3px solid black; display: inline-block; flex: 1; padding-left: 20px">
+                <form th:action="@{/payment/process}" th:object="${cardForm}" method="post">
+                    <div th:if="${#fields.hasErrors('*')}" class="govuk-error-summary">
+                        <h2 class="govuk-error-summary__title">
+                            There is a problem
+                        </h2>
+                        <ul class="govuk-list govuk-error-summary__list">
+                            <li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
+                        </ul>
+                    </div>
                     <input type="hidden" name="refNum" th:field="*{refNum}">
                     <div class="govuk-form-group">
                         <label class="govuk-label" for="email">
@@ -119,36 +127,36 @@
                         </div>
                         <input class="govuk-input" id="email" name="email" type="email" spellcheck="false" aria-describedby="email-hint" autocomplete="email" th:field="*{email}">
                     </div>
-                </div>
-            <h2 class="govuk-heading-l">Enter Payment Card Details</h2>
-                    <div class="govuk-form-group">
-                        <label class="govuk-label" for="card-number">
-                            Card Number
-                        </label>
-                        <input class="govuk-input" id="card-number" name="card-number" type="text" spellcheck="false" th:field="*{cardNumber}">
-                    </div>
-                    <div class="govuk-form-group">
-                        <label class="govuk-label" for="expiry-date">
-                            Expiry Date
-                        </label>
-                        <input class="govuk-input" id="expiry-date" name="expiry-date" type="text" spellcheck="false" th:field="*{expiryDate}">
-                    </div>
-                    <div class="govuk-form-group">
-                        <label class="govuk-label" for="card-security-code">
-                            Card Security Code
-                        </label>
-                        <input class="govuk-input" id="card-security-code" name="card-security-code" type="text" spellcheck="false" th:field="*{cvv}">
-                    </div>
-                    <div class="govuk-form-group">
-                        <label class="govuk-label" for="account-name">
-                            Name on the Account
-                        </label>
-                        <input class="govuk-input" id="account-name" name="account-name" type="text" spellcheck="false">
-                    </div>
-                    <button type="submit" class="govuk-button" data-module="govuk-button">
-                        Submit
-                    </button>
-            </form>
+                    <h2 class="govuk-heading-l">Enter Payment Card Details</h2>
+                        <div class="govuk-form-group">
+                            <label class="govuk-label" for="card-number">
+                                Card Number
+                            </label>
+                            <input class="govuk-input" id="card-number" name="card-number" type="text" spellcheck="false" th:field="*{cardNumber}">
+                        </div>
+                        <div class="govuk-form-group">
+                            <label class="govuk-label" for="expiry-date">
+                                Expiry Date
+                            </label>
+                            <input class="govuk-input" id="expiry-date" name="expiry-date" type="text" spellcheck="false" th:field="*{expiryDate}">
+                        </div>
+                        <div class="govuk-form-group">
+                            <label class="govuk-label" for="card-security-code">
+                                Card Security Code
+                            </label>
+                            <input class="govuk-input" id="card-security-code" name="card-security-code" type="text" spellcheck="false" th:field="*{cvv}">
+                        </div>
+                        <div class="govuk-form-group">
+                            <label class="govuk-label" for="account-name">
+                                Name on the Account
+                            </label>
+                            <input class="govuk-input" id="account-name" name="account-name" type="text" spellcheck="false">
+                        </div>
+                        <button type="submit" class="govuk-button" data-module="govuk-button">
+                            Submit
+                        </button>
+                </form>
+            </div>
         </div>
     </main>
 </div>
