@@ -114,7 +114,6 @@
 
         <form id="fine-form" action="/form-handler" method="post" novalidate>
 
-          <fieldset class="govuk-fieldset" aria-describedby="reference-hint">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
               <h2 class="govuk-fieldset__heading">
                 Enter Reference Number
@@ -124,37 +123,11 @@
               This is the 16-digit number on your fine notice
             </div>
 
-            <div class="reference-number-group govuk-!-margin-bottom-6">
-              <div class="govuk-form-group">
-                <label class="govuk-label govuk-visually-hidden" for="ref-part-1">First 4 digits</label>
-                <input class="govuk-input govuk-input--width-4 ref-input" id="ref-part-1" type="text" maxlength="4" inputmode="numeric" pattern="[0-9]*">
-              </div>
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="referenceNumber">Reference Number</label>
+            <input class="govuk-input" id="referenceNumber" name="referenceNumber" type="text" autocomplete="referenceNumber">
+          </div>
 
-              <span class="reference-number-separator" aria-hidden="true">-</span>
-
-              <div class="govuk-form-group">
-                <label class="govuk-label govuk-visually-hidden" for="ref-part-2">Second 4 digits</label>
-                <input class="govuk-input govuk-input--width-4 ref-input" id="ref-part-2" type="text" maxlength="4" inputmode="numeric" pattern="[0-9]*">
-              </div>
-
-              <span class="reference-number-separator" aria-hidden="true">-</span>
-
-              <div class="govuk-form-group">
-                <label class="govuk-label govuk-visually-hidden" for="ref-part-3">Third 4 digits</label>
-                <input class="govuk-input govuk-input--width-4 ref-input" id="ref-part-3" type="text" maxlength="4" inputmode="numeric" pattern="[0-9]*">
-              </div>
-
-              <span class="reference-number-separator" aria-hidden="true">-</span>
-
-              <div class="govuk-form-group">
-                <label class="govuk-label govuk-visually-hidden" for="ref-part-4">Final 4 digits</label>
-                <input class="govuk-input govuk-input--width-4 ref-input" id="ref-part-4" type="text" maxlength="4" inputmode="numeric" pattern="[0-9]*">
-              </div>
-            </div>
-
-            <input type="hidden" id="full-reference-number" name="referenceNumber" value="">
-
-          </fieldset>
 
           <fieldset class="govuk-fieldset" aria-describedby="address-hint">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
@@ -210,38 +183,5 @@
 
 <script th:src="@{/js/govuk-frontend-6.1.0.min.js}"> </script>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const inputs = document.querySelectorAll('.ref-input');
-    const hiddenInput = document.getElementById('full-reference-number');
-    const form = document.getElementById('fine-form');
-
-    // 1. Auto-advance logic
-    inputs.forEach((input, index) => {
-      input.addEventListener('input', function() {
-        // If the box hits 4 characters and isn't the last box, jump to the next one
-        if (this.value.length === 4 && index < inputs.length - 1) {
-          inputs[index + 1].focus();
-        }
-      });
-
-      // Handle backspace to jump to the previous box if current is empty
-      input.addEventListener('keydown', function(e) {
-        if (e.key === 'Backspace' && this.value.length === 0 && index > 0) {
-          inputs[index - 1].focus();
-        }
-      });
-    });
-
-    // 2. Concatenate before submit
-    form.addEventListener('submit', function() {
-      // Grab all 4 values, join them into one string, and set the hidden input
-      const fullNumber = Array.from(inputs).map(input => input.value).join('');
-      hiddenInput.value = fullNumber;
-
-      // Note: The form will now naturally submit with referenceNumber = "1234567890123456"
-    });
-  });
-</script>
 </body>
 </html>
