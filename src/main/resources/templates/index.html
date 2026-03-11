@@ -126,7 +126,7 @@
 
           <div class="govuk-form-group">
             <label class="govuk-label" for="referenceNumber">Reference Number</label>
-            <input class="govuk-input" id="referenceNumber" name="referenceNumber" type="text" autocomplete="referenceNumber">
+            <input class="govuk-input" id="referenceNumber" name="referenceNumber" type="text" autocomplete="referenceNumber" th:field="*{refNum}">
           </div>
 
 
@@ -163,7 +163,7 @@
 
             <div class="govuk-form-group">
               <label class="govuk-label" for="address-postcode">Postcode</label>
-              <input class="govuk-input govuk-input--width-10" id="address-postcode" name="addressPostcode" type="text" autocomplete="postal-code">
+              <input class="govuk-input govuk-input--width-10" id="address-postcode" name="addressPostcode" type="text" autocomplete="postal-code" th:field="*{postcode}">
             </div>
 
           </fieldset>
