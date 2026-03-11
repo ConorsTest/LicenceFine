@@ -112,8 +112,9 @@
 
         <h1 class="govuk-heading-xl">Pay TV license fine</h1>
 
-        <form id="fine-form" action="/form-handler" method="post" novalidate>
+        <form th:action="@{/}" th:object="${numberAndAddressForm}" method="post">
 
+          <fieldset class="govuk-fieldset" aria-describedby="reference-hint">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
               <h2 class="govuk-fieldset__heading">
                 Enter Reference Number
@@ -125,7 +126,7 @@
 
           <div class="govuk-form-group">
             <label class="govuk-label" for="referenceNumber">Reference Number</label>
-            <input class="govuk-input" id="referenceNumber" name="referenceNumber" type="text" autocomplete="referenceNumber">
+            <input class="govuk-input" id="referenceNumber" name="referenceNumber" type="text" autocomplete="referenceNumber" th:field="*{refNum}">
           </div>
 
 
@@ -142,27 +143,27 @@
 
             <div class="govuk-form-group">
               <label class="govuk-label" for="address-line-1">Address line 1</label>
-              <input class="govuk-input" id="address-line-1" name="addressLine1" type="text" autocomplete="address-line1">
+              <input class="govuk-input" id="address-line-1" name="addressLine1" type="text" autocomplete="address-line1" th:field="*{addressLineOne}">
             </div>
 
             <div class="govuk-form-group">
               <label class="govuk-label" for="address-line-2">Address line 2 <span class="govuk-visually-hidden">optional</span></label>
-              <input class="govuk-input" id="address-line-2" name="addressLine2" type="text" autocomplete="address-line2">
+              <input class="govuk-input" id="address-line-2" name="addressLine2" type="text" autocomplete="address-line2" th:field="*{addressLineTwo}">
             </div>
 
             <div class="govuk-form-group">
               <label class="govuk-label" for="address-town">Town/city</label>
-              <input class="govuk-input govuk-!-width-two-thirds" id="address-town" name="addressTown" type="text" autocomplete="address-level2">
+              <input class="govuk-input govuk-!-width-two-thirds" id="address-town" name="addressTown" type="text" autocomplete="address-level2" th:field="*{townOrCity}">
             </div>
 
             <div class="govuk-form-group">
               <label class="govuk-label" for="address-county">County <span class="govuk-visually-hidden">optional</span></label>
-              <input class="govuk-input govuk-!-width-two-thirds" id="address-county" name="addressCounty" type="text" autocomplete="address-level1">
+              <input class="govuk-input govuk-!-width-two-thirds" id="address-county" name="addressCounty" type="text" autocomplete="address-level1" th:field="*{county}">
             </div>
 
             <div class="govuk-form-group">
               <label class="govuk-label" for="address-postcode">Postcode</label>
-              <input class="govuk-input govuk-input--width-10" id="address-postcode" name="addressPostcode" type="text" autocomplete="postal-code">
+              <input class="govuk-input govuk-input--width-10" id="address-postcode" name="addressPostcode" type="text" autocomplete="postal-code" th:field="*{postcode}">
             </div>
 
           </fieldset>
