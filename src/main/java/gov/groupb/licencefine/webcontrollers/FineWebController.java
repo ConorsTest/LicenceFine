@@ -36,18 +36,7 @@ public class FineWebController {
         }
         model.addAttribute("Success Message",
                 "Details Submitted Successfully");
-            return "payment";
-    }
-
-
-    @GetMapping("/payment")
-    public String payment(){
-        return "payment";
-    }
-
-    @GetMapping("/success")
-    public String success(){
-        return "success";
+        return "redirect:/payment/" + numberAndAddressForm.getRefNum();
     }
 
 }
