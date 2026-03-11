@@ -38,24 +38,33 @@ public class PaymentWebController {
         if(result.hasErrors()){
             System.err.println(result.getAllErrors());
             System.err.println("Oh No");
-            return "payment";
+            return "redirect:/payment/" + cardForm.getRefNum();
         }
         model.addAttribute("Success message",
                 "Details submitted successfully");
 
         Fine fine = fineRepository.findByRefNum(cardForm.getRefNum());
 
+        System.err.println(cardForm.getEmail());
         fine.setEmail(cardForm.getEmail());
         fine.setPaid(true);
 
         fineRepository.save(fine);
 
         System.err.println("success");
-        return "redirect:/payment/success";
+        return "redirect:/payment/success/" + fine.getRefNum();
     }
 
-    @GetMapping("/success")
-    public String showSuccessPage() {
+    @GetMapping("/success/{refNum}")
+    public String showSuccessPage(@PathVariable String refNum,
+                                  Model model) {
+
+        System.err.println(refNum);
+        model.addAttribute(refNum, "refNum");
+        System.err.println(fineRepository.findByRefNum(refNum).getAddressLineOne());
+        model.addAttribute(fineRepository.findByRefNum(refNum).getEmail(),
+                "email");
+        System.err.println(fineRepository.findByRefNum(refNum).getEmail());
         return "success";
     }
 }
