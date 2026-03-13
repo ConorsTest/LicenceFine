@@ -15,9 +15,9 @@ public class LoadFines {
                     false,
                     "01/01/01",
                     "02/02/02",
-                    "6 Funny Street",
+                    "1 Some Street",
                     "",
-                    "Dumbtown",
+                    "City",
                     "",
                     "DB6 9SH",
                     ""
@@ -27,12 +27,12 @@ public class LoadFines {
                     true,
                     "01/01/01",
                     "02/02/02",
-                    "6 Sad Street",
+                    "2 Some Street",
                     "",
-                    "Smarttown",
-                    "Up",
+                    "City",
+                    "",
                     "DB6 9SH",
-                    "email@smarttown.com"
+                    "email@somestreet.com"
             ));
         };
     }
